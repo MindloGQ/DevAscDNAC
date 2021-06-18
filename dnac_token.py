@@ -18,6 +18,6 @@ def get_auth_token():
 	print("Token Retrieved: {}".format(token))
 	# Create a return statement to send the token back for later use
 	return token
+
 # Call the function that you have created and retrieve the Token
-if __name__ == "__main__":
-	get_auth_token()
+get_auth_token()
