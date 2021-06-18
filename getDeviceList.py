@@ -2,7 +2,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 from dnac_config2 import DNAC, DNAC_PORT, DNAC_USER, DNAC_PASSWORD
 import json
-from tabulate import tabulate
 
 
 def get_auth_token():
@@ -14,7 +13,6 @@ def get_auth_token():
     token = resp.json()['Token']    # Retrieve the Token from the returned JSONhahhah
     return token    # Create a return statement to send the token back for later use
 
-
 def get_device_list():
     """
     Building out function to retrieve list of devices. 
@@ -24,8 +22,12 @@ def get_device_list():
     url = "https://sandboxdnac.cisco.com/api/v1/network-device"
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     resp = requests.get(url, headers=hdr)  # Make the Get Request
+    
     device_list = resp.json() #This will return the list of devices in dictionary format
+    
     device_list = json.dumps(device_list, indent=4) #this will make the device list more readable
     print(device_list)
+
+
 
 get_device_list()
